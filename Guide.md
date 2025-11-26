@@ -37,10 +37,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 
-## MongodbCluster Username : Aman , Passcode : Unbreakable81
+# MongodbCluster Username : Aman , Passcode : Unbreakable81
 
 
-## To Create a Full stack app from a Scratch We need follow these steps :-
+# To Create a Full stack app from a Scratch We need follow these steps :-
 
 (a) First go and create a folder where you want to add you all files by manually by
 file manager or cmd or Git what ever you want and Comfortable with All works same 
@@ -76,3 +76,12 @@ fullstack-next/
 
 (d) Now look There is 2 files with js extentsion named layout and page , You have to change it from js to jsx because we need the features of jsx later on . Now you are free to delete all code in your page.jsx and write you own you want to deploy on internet .
  
+
+
+
+<span style="color: red;">Possible Commits</span>
+
+1. END is changed fevicon , learnt about Domains 18/11/2025.
+2. Adding Routes to Navigate Between Pages .  25/11/2025
+XXXXX Memo : Learning About Async Await Function and Build : Setting Different Blogs On All pages , UX/UI Modification .
+

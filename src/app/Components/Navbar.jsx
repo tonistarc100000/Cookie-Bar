@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
+import Link from "next/link";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -11,7 +12,14 @@ export default function Navbar() {
   const [showRegister, setShowRegister] = useState(false);
   const [user, setUser] = useState(null);
 
-  const links = ["Home", "Popular", "Trending", "Local", "Categories"];
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Popular", path: "pages/Popular" },
+    { name: "Trending", path: "pages/Trending" },
+    { name: "Local", path: "pages/Local" },
+    { name: "Latest", path: "pages/Latest" },
+    { name: "About", path: "pages/About" },
+  ];
 
   // ✅ Restore logged-in user on refresh
   useEffect(() => {
@@ -43,10 +51,10 @@ export default function Navbar() {
 
           {/* Links */}
           <ul className="hidden md:flex space-x-6">
-            {links.map((l) => (
-              <li key={l} className="hover:text-amber-400 cursor-pointer">
-                {l}
-              </li>
+            {links.map((link) => (
+              <div key={link.name} className="py-1">
+                <Link href={link.path}>{link.name}</Link>
+              </div>
             ))}
           </ul>
 

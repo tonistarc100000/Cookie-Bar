@@ -1,6 +1,7 @@
 "use client";
+import Navbar from "@/app/Components/Navbar";
 import { useState } from "react";
-import BlogModal from "./BlogModal";
+import BlogModal from "@/app/Components/BlogModal";
 
 const blogs = [
   {
@@ -101,6 +102,7 @@ const blogs = [
   },
 ].map((blog, index) => ({ id: index + 1, ...blog }));
 
+
 export default function BlogGrid() {
   const [visible, setVisible] = useState(6);
   const [selectedBlog, setSelectedBlog] = useState(null);
@@ -110,50 +112,54 @@ export default function BlogGrid() {
   const closeModal = () => setSelectedBlog(null);
 
   return (
-    <div className="bg-gray-950 min-h-screen py-10 px-6">
-      <h2 className="text-3xl font-bold text-white mb-8 text-center">
-        Latest News
-      </h2>
+    <>
+      <Navbar />
 
-      {/* Blog Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {blogs.slice(0, visible).map((blog) => (
-          <div
-            key={blog.id}
-            onClick={() => openBlog(blog)}
-            className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 hover:scale-[1.02]"
-          >
-            <img
-              src={blog.image}
-              alt={blog.title}
-              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-              <h3 className="text-lg font-semibold text-white drop-shadow-md">
-                {blog.title}
-              </h3>
+      <div className="bg-gray-950 min-h-screen py-10 px-6">
+        <h2 className="text-3xl font-bold text-white mb-8 text-center">
+          Trending News
+        </h2>
+
+        {/* Blog Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {blogs.slice(0, visible).map((blog) => (
+            <div
+              key={blog.id}
+              onClick={() => openBlog(blog)}
+              className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer transition-all duration-500 hover:scale-[1.02]"
+            >
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                <h3 className="text-lg font-semibold text-white drop-shadow-md">
+                  {blog.title}
+                </h3>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-
-      {visible < blogs.length && (
-        <div className="flex justify-center mt-10">
-          <button
-            onClick={loadMore}
-            className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition-all duration-300"
-          >
-            Load More
-          </button>
+          ))}
         </div>
-      )}
 
-      {/* Modal */}
-      <BlogModal
-        isOpen={!!selectedBlog}
-        blog={selectedBlog}
-        onClose={closeModal}
-      />
-    </div>
+        {visible < blogs.length && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={loadMore}
+              className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition-all duration-300"
+            >
+              Load More
+            </button>
+          </div>
+        )}
+
+        {/* Modal */}
+        <BlogModal
+          isOpen={!!selectedBlog}
+          blog={selectedBlog}
+          onClose={closeModal}
+        />
+      </div>
+    </>
   );
 }
